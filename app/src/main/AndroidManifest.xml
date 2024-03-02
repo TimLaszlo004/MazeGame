@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.DayNight"
+        tools:targetApi="31">
+        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 mine: ca-app-pub-8568086554876208~7612013043 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+        <activity
+            android:name=".LevelSelectionActivity"
+            android:parentActivityName=".Game"
+            android:label="Select level"
+            android:exported="false" />
+        <activity
+            android:name=".Leaderboard"
+            android:label="Leaderboard"
+            android:parentActivityName=".Game"
+            android:exported="false" />
+        <activity
+            android:name=".CustomizeActivity"
+            android:label="Customize"
+            android:parentActivityName=".Game"
+            android:exported="false" />
+        <activity
+            android:name=".Achievements"
+            android:label="Achievements"
+            android:parentActivityName=".Game"
+            android:exported="false" />
+        <activity
+            android:name=".SignInActivity"
+            android:label="Maze game"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Game"
+            android:parentActivityName=".SignInActivity"
+            android:exported="false"
+            android:label="@string/title_activity_game"
+            android:theme="@style/Theme.Nitro" />
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".LevelSelectionActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

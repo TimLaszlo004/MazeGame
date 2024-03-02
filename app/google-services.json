@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1064019779857",
+    "firebase_url": "https://nitrobase-70099-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "nitrobase-70099",
+    "storage_bucket": "nitrobase-70099.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064019779857:android:99f9fc2dc03a5829a2acb0",
+        "android_client_info": {
+          "package_name": "com.example.nitro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064019779857-4oflalcqbl1uab2ohfk757lf6d8slotp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC71wnDBsda1tFj5WiU3uQH_Z69QYYKIjc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064019779857-4oflalcqbl1uab2ohfk757lf6d8slotp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
