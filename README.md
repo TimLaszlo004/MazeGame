@@ -1,3 +1,6 @@
+<video width="320" height="240" controls>
+  <source src="https://www.youtube.com/watch?v=k2hgGS21dgA" type="video/mp4">
+</video>
 This is a university project made by Laszlo Timar for (and only) demonstration purposes.
 The time is very limited and it is also not in the requirements to be really enjoyable and useful, it serves as a proof of knowledge that I can use Android Studio, Java combined with a Database and API calls.
 
