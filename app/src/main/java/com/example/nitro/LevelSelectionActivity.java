@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -73,23 +71,20 @@ public class LevelSelectionActivity extends AppCompatActivity {
                                 startActivity(i);
                             }
                         });
-                        //lin.addView(levelBtn);
                         linearParent.addView(levelBtn, params);
 
 
-                        Log.d("query", "maze data");
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("query", "mazes not cool");
+
             }
         });
         Random rand = new Random();
         if(rand.nextInt(100) < 10){
-            Log.d("TAG", "inside ad!");
             AdRequest adRequest = new AdRequest.Builder().build();
 
             InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
@@ -109,11 +104,6 @@ public class LevelSelectionActivity extends AppCompatActivity {
                             mInterstitialAd = null;
                         }
                     });
-//            if (mInterstitialAd != null) {
-//                mInterstitialAd.show(LevelSelectionActivity.this);
-//            } else {
-//                Log.d("TAG", "The interstitial ad wasn't ready yet.");
-//            }
         }
 
 

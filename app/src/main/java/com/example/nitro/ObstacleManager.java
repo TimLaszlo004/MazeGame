@@ -1,17 +1,9 @@
 package com.example.nitro;
 
-import static android.graphics.Color.rgb;
-
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.util.Log;
-import android.widget.Toast;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
+import android.graphics.Rect;
+
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -75,7 +67,6 @@ public class ObstacleManager {
             }
         }
 
-        Log.d("mazeData", boundingBox.toString());
 
         // leaving 2-2 line of space from the edge of the screen
         // int obSize = (int)(Constants.SCREEN_WIDTH / (boundingBox.getWidth()+4));
@@ -105,14 +96,11 @@ public class ObstacleManager {
             }
             Obstacle o = new Obstacle(r, colorWall, 1, mazeLines.get(i));
             obstacles.add(o);
-            Log.d("mazeData", r.toString());
         }
-        Log.d("bound", boundingBox.toString());
         boundingBox.left = startX-wallWidth;
         boundingBox.top = startY-wallWidth;
         boundingBox.right = startX + (int)(boundingBox.right * sizeMultiplier)+wallWidth;
         boundingBox.bottom = startY + (int)(boundingBox.bottom * sizeMultiplier)+wallWidth;
-        Log.d("bound", boundingBox.toString());
     }
 
     public int getSize(){
@@ -155,7 +143,6 @@ public class ObstacleManager {
             {
                 String[] parts = line.split("\"");
                 lines.add(new RectVector(Integer.valueOf(parts[1]), Integer.valueOf(parts[3]), Integer.valueOf(parts[5]), Integer.valueOf(parts[7])));
-                // Log.d("mazeData", parts[1] + ", " + parts[3] + ", " + parts[5] + ", " + parts[7]);
             }
             is.close(); // close input stream
 
@@ -164,7 +151,6 @@ public class ObstacleManager {
         catch (Exception e)
         {
             e.printStackTrace();
-            Log.d("mazeData", "Error: " + e);
         }
 
         return null;
@@ -180,7 +166,6 @@ public class ObstacleManager {
         return (int)(Constants.SCREEN_WIDTH/2);
     }
     public int getStartY(){
-        Log.d("bound", boundingBox.toString());
         return (int)(Constants.SCREEN_HEIGHT/2 + boundingBox.getHeight()/2) + 2*getSize();
     }
     public RectVector getEndRect(){

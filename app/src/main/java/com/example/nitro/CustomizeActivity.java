@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -36,7 +35,6 @@ public class CustomizeActivity extends AppCompatActivity {
         else{
             currentTxt.setText("#" + String.valueOf(UserInformation.themeId));
         }
-        Log.d("theme", String.valueOf(UserInformation.themeId));
 
         switch (UserInformation.themeId){
             case 0:

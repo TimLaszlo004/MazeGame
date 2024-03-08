@@ -2,10 +2,8 @@ package com.example.nitro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -52,16 +50,6 @@ public class Leaderboard extends AppCompatActivity {
                         catch(Exception e){
                             continue;
                         }
-//                        TextView txtV = new TextView(Leaderboard.this);
-//                        txtV.setText(String.valueOf(i) + ". " + data.name + "    " + data.leaderboardValue);
-//                        txtV.setTextSize(25);
-//                        txtV.setBackgroundColor(getResources().getColor(R.color.purple_200, getTheme()));
-//                        LinearLayout.LayoutParams parms  = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-//                        parms.setMargins(10, 10, 10, 10);
-//                        txtV.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                        linearLayout.addView(txtV, parms);
-//                        Log.d("query", "user data");
-                        //i++;
                     }
                     Collections.reverse(allUser);
                     for(int i = 0; i < allUser.size(); i++){
@@ -77,14 +65,13 @@ public class Leaderboard extends AppCompatActivity {
                         parms.setMargins(10, 10, 10, 10);
                         txtV.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                         linearLayout.addView(txtV, parms);
-                        Log.d("query", "user data");
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("query", "users not cool");
+
             }
         });
     }

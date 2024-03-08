@@ -1,6 +1,5 @@
 package com.example.nitro;
 
-import android.graphics.Rect;
 
 public class RectVector {
     public int left;

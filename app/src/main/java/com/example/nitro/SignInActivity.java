@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -15,16 +14,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.Identity;
-import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.identity.SignInCredential;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -34,7 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -84,7 +80,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
         if(database == null){
-            Log.d("database", "Something is really fucked up...");
+            Log.d("database", "Something is really wrong with the database handling...");
         }
     }
 
@@ -134,7 +130,6 @@ public class SignInActivity extends AppCompatActivity {
                             UserInformation.fullName = user.getDisplayName();
                             UserInformation.photoUrl = user.getPhotoUrl().toString();
                             if(!isNew){
-                                Log.d("userValue", "trying get values");
                                 Query query = database.getReference().child("users").child(UserInformation.userId);
                                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -147,7 +142,7 @@ public class SignInActivity extends AppCompatActivity {
                                                 UserInformation.themeId = data.themeId;
                                             }
                                             catch(Exception e){
-                                                Log.d("userValue", "data.toString()");
+                                                Log.d("userValue", "can't read user data correctly");
                                             }
                                         }
                                     }

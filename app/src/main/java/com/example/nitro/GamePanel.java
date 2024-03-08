@@ -13,22 +13,12 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
+
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
 
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
@@ -73,7 +62,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         timer = LevelInfo.maxTime;
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
-        Log.d("list", LevelInfo.mazeUrl);
         obManager = new ObstacleManager(LevelInfo.sizeX, LevelInfo.sizeY, UserInformation.colorWalls, LevelInfo.mazeUrl);
         player = new RectPlayer(new Rect(100, 100, 100+((int)(obManager.getSize()*0.45)), 100+((int)(obManager.getSize()*0.45))), UserInformation.colorPlayer);
         playerPoint = new Point(obManager.getStartX(), obManager.getStartY());
@@ -155,7 +143,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("query", "mazes not cool");
                 game.toLevels();
             }
         });
@@ -195,17 +182,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
         else if(nextBtn.getBounds().top < (int)event.getY() && nextBtn.getBounds().bottom > (int)event.getY()
                 && nextBtn.getBounds().right > (int)event.getX() && nextBtn.getBounds().left < (int)event.getX()){
-            Log.d("btn", "next level");
             nextMaze();
         }
         else if(backBtn.getBounds().top < (int)event.getY() && backBtn.getBounds().bottom > (int)event.getY()
                 && backBtn.getBounds().right > (int)event.getX() && backBtn.getBounds().left < (int)event.getX()){
-            Log.d("btn", "back");
             game.toLevels();
         }
         else if(restartBtn.getBounds().top < (int)event.getY() && restartBtn.getBounds().bottom > (int)event.getY()
                 && restartBtn.getBounds().right > (int)event.getX() && restartBtn.getBounds().left < (int)event.getX()){
-            Log.d("btn", "restart");
             restart();
         }
 
@@ -249,10 +233,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         int newPlayerPointX = playerPoint.x;
         int newPlayerPointY = playerPoint.y;
         if(obManager.isColliding(player, playerPoint.x, playerPoint.y, pointMemX, pointMemY, player.getRect().width()/2)){
-//            if(Abs(playerPoint.x - pointMemX) + Abs(playerPoint.y-pointMemY) <= collideBounceBackThreshold){
-//                playerPoint.set(pointMemX + (int)(collideBounceBackMultiplier*(pointMemX-playerPoint.x)), pointMemY + (int)(collideBounceBackMultiplier*(pointMemY-playerPoint.y)));
-//                Log.d("bounce", "bounced");
-//            }
             if(true){
                 boolean isXCollision = false;
                 boolean isYCollision = false;
@@ -285,7 +265,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     }
                 }
                 if(isYCollision){
-                    Log.d("coll", "collcool");
                     if(isXCollision){
                         playerPoint.set(pointMemX + (int)(collideBounceBackMultiplier*(pointMemX-newPlayerPointX)), pointMemY + (int)(collideBounceBackMultiplier*(pointMemY-newPlayerPointY)));
                     }
@@ -294,11 +273,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     }
                 }
                 else if(isXCollision){
-                    Log.d("coll", "collcool");
                     playerPoint.set(pointMemX + (int)(collideBounceBackMultiplier*(pointMemX-newPlayerPointX)), newPlayerPointY);
-                }
-                else{
-                    Log.d("coll", "WTF???");
                 }
             }
 //            else{
@@ -351,7 +326,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             timePaint.setColor(Color.WHITE);
             timePaint.setTextSize(80);
             canvas.drawText(format2Digits((LevelInfo.maxTime- timer)/60) + " : " + format2Digits((LevelInfo.maxTime- timer)%60 +1), (int)(Constants.SCREEN_WIDTH/2 - 110), (int)(Constants.SCREEN_HEIGHT/2 + 200), timePaint);
-            Log.d("panel", "win panel");
 
         }
         // timer text
