@@ -8,8 +8,8 @@
     tools:context=".LevelSelectionActivity">
 
     <ScrollView
-        android:layout_width="297dp"
-        android:layout_height="434dp"
+        android:layout_width="331dp"
+        android:layout_height="651dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

@@ -23,25 +23,30 @@
             android:name=".LevelSelectionActivity"
             android:parentActivityName=".Game"
             android:label="Select level"
+            android:theme="@style/Theme.Nitro"
             android:exported="false" />
         <activity
             android:name=".Leaderboard"
             android:label="Leaderboard"
             android:parentActivityName=".Game"
+            android:theme="@style/Theme.Nitro"
             android:exported="false" />
         <activity
             android:name=".CustomizeActivity"
             android:label="Customize"
             android:parentActivityName=".Game"
+            android:theme="@style/Theme.Nitro"
             android:exported="false" />
         <activity
             android:name=".Achievements"
             android:label="Achievements"
             android:parentActivityName=".Game"
+            android:theme="@style/Theme.Nitro"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
             android:label="Maze game"
+            android:theme="@style/Theme.Nitro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,6 +63,7 @@
         <activity
             android:name=".MainActivity"
             android:parentActivityName=".LevelSelectionActivity"
+            android:theme="@style/Theme.Nitro"
             android:exported="false" />
     </application>
 

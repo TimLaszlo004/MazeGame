@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,12 +23,16 @@ import java.util.Collections;
 
 public class Leaderboard extends AppCompatActivity {
 
+    TextView yourData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_leaderboard);
         LinearLayout linearLayout = findViewById(R.id.scrolllinear);
+        yourData = (TextView)findViewById(R.id.textView5);
         ArrayList<UserData> allUser = new ArrayList<UserData>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
@@ -60,6 +65,10 @@ public class Leaderboard extends AppCompatActivity {
                     }
                     Collections.reverse(allUser);
                     for(int i = 0; i < allUser.size(); i++){
+                        if(allUser.get(i).id.equals(UserInformation.userId)){
+                            yourData.setText("You are number " + String.valueOf(i+1) + ". (Your result is: " +
+                             String.valueOf(allUser.get(i).leaderboardValue) + ")");
+                        }
                         TextView txtV = new TextView(Leaderboard.this);
                         txtV.setText(String.valueOf(i+1) + ". " + allUser.get(i).name + "    " + allUser.get(i).leaderboardValue);
                         txtV.setTextSize(25);
